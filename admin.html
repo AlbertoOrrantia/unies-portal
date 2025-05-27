@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Super Admin - UNIES</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="oferta-body">
+  <header class="oferta-header">
+    <a href="index.html">
+      <img src="images/unies_logo.png" alt="UNIES Logo" class="oferta-logo">
+    </a>
+    <h1 class="oferta-title">Administración</h1>
+    <button onclick="cerrarSesion()" class="logout-button">Cerrar sesión</button>
+  </header>
+
+  <main class="oferta-main">
+    <h2 class="white-title">Todos los cursos</h2>
+    <div class="pdf-grid">
+      <div class="pdf-card">
+        <img src="images/administracion_preview.png" class="preview-img">
+        <a href="pdf/Administracion.pdf" target="_blank">Administración de Negocios</a>
+      </div>
+      <div class="pdf-card">
+        <img src="images/derecho_preview.png" class="preview-img">
+        <a href="pdf/Derecho.pdf" target="_blank">Derecho</a>
+      </div>
+      <div class="pdf-card">
+        <img src="images/educacion_preview.png" class="preview-img">
+        <a href="pdf/Educacion.pdf" target="_blank">Educación</a>
+      </div>
+      <div class="pdf-card">
+        <img src="images/contaduria_preview.png" class="preview-img">
+        <a href="pdf/Contaduria.pdf" target="_blank">Contaduría</a>
+      </div>
+    </div>
+
+    <h2 class="white-title">Gestión de Usuarios</h2>
+    <button class="add-user-button" onclick="mostrarAgregarUsuario()">Agregar usuario</button>
+
+    <div class="add-user-modal hidden" id="addUserModal">
+      <div class="login-box">
+        <h3>Nuevo Usuario</h3>
+        <input type="text" id="fullNameInput" placeholder="Nombre completo">
+        <select id="courseSelect">
+          <option value="Administración de Negocios">Administración de Negocios</option>
+          <option value="Derecho">Derecho</option>
+          <option value="Educación">Educación</option>
+          <option value="Contaduría">Contaduría</option>
+        </select>
+        <div class="login-actions">
+          <button onclick="crearUsuario()">Crear</button>
+          <button onclick="ocultarAgregarUsuario()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-grid" id="userList"></div>
+  </main>
+
+  <script>
+    function cerrarSesion() {
+      window.location.href = "index.html";
+    }
+
+    function mostrarAgregarUsuario() {
+      document.getElementById("addUserModal").classList.remove("hidden");
+    }
+
+    function ocultarAgregarUsuario() {
+      document.getElementById("addUserModal").classList.add("hidden");
+    }
+
+    function crearUsuario() {
+      const name = document.getElementById("fullNameInput").value.trim();
+      const course = document.getElementById("courseSelect").value;
+      if (!name) return alert("Nombre requerido");
+
+      const username = name.toLowerCase().split(" ").slice(0, 2).join(".").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+      const userCard = document.createElement("div");
+      userCard.className = "pdf-card";
+      userCard.innerHTML = `
+        <strong>Nombre:</strong> ${name}<br>
+        <strong>Usuario:</strong> ${username}<br>
+        <strong>Curso:</strong> ${course}<br>
+        <strong>Contraseña:</strong> password
+      `;
+      document.getElementById("userList").appendChild(userCard);
+      ocultarAgregarUsuario();
+    }
+  </script>
+</body>
+</html>

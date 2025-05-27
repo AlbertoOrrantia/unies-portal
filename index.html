@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Portal UNIES</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="portal-body">
+  <header class="portal-header">
+    <img src="images/unies_logo.png" alt="UNIES Logo" class="portal-logo">
+    <div class="portal-nav">
+      <button class="nav-button" id="alumnos-btn">Alumnos</button>
+      <button class="nav-button" id="docentes-btn">Docentes</button>
+    </div>
+  </header>
+
+  <main class="portal-main">
+    <h1 class="portal-title">Bienvenido al Portal UNIES</h1>
+    <div class="login-modal" id="loginModal">
+      <div class="login-box">
+        <h2>Iniciar sesión</h2>
+        <label for="username">Usuario:</label>
+        <input type="text" id="username">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password">
+        <div class="login-actions">
+          <button onclick="login()">Iniciar</button>
+          <button onclick="hideModal()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Alumno - Cursos</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="oferta-body">
+  <header class="oferta-header">
+    <a href="index.html">
+      <img src="images/unies_logo.png" alt="UNIES Logo" class="oferta-logo">
+    </a>
+    <h1 class="oferta-title">Cursos</h1>
+    <button onclick="cerrarSesion()" class="logout-button">Cerrar sesión</button>
+  </header>
+
+  <main class="oferta-main">
+    <h2 class="white-title">Maestría</h2>
+    <div class="pdf-grid">
+      <div class="pdf-card">
+        <img src="images/administracion_preview.png" alt="Administración Preview" class="preview-img">
+        <a href="pdf/Administracion.pdf" target="_blank">Administración de Negocios</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function cerrarSesion() {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
